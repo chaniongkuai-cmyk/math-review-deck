@@ -17,8 +17,9 @@
   3. 高三理組數學思維本(2026)空間向量全冊（共 5 大專題、75 題卡、11 張立體幾何高清配圖、100% 植入微軟原生 OMML 公式）。
   4. 澳門四校聯考 100 分鐘專題突破限時練習工作紙 · Topic 03: 複數代數、棣美弗定理與複平面幾何（共 3 大模組、10 道大題/小題卡、滿分 100 分、100% 植入微軟原生 OMML 公式）。
 - **線上展示多入口與互聯矩陣**：
-  - 四校聯考首頁：https://jtchen1225-a11y.github.io/math-review-deck/
+  - 🟣 **複數代數專屬短網址**：https://www.daydaystudy.top/complex
   - 複數代數與複平面幾何專題頁：https://jtchen1225-a11y.github.io/math-review-deck/complex.html
+  - 四校聯考首頁：https://jtchen1225-a11y.github.io/math-review-deck/
   - 微積分思維本專題頁：https://jtchen1225-a11y.github.io/math-review-deck/calculus.html
   - 空間向量思維本專題頁：https://jtchen1225-a11y.github.io/math-review-deck/vectors.html
   - 在線 OMML 數學方程式庫：https://jtchen1225-a11y.github.io/math-review-deck/omml.html
