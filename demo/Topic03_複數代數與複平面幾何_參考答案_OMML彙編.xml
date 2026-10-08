@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ommlCompilation title="Topic 03: 複數代數、棣美弗定理與複平面幾何 參考答案 OMML 彙編" total="10" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+  <problem id="1" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 01" topic="複數除法分母有理化 · 共軛複數概念">
+    <latex>(A) $\frac{8}{5} - \frac{9}{5}i$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(A)$</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>8</m:t></m:r></m:num><m:den><m:r><m:t>5</m:t></m:r></m:den></m:f><m:r><m:t>−</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>9</m:t></m:r></m:num><m:den><m:r><m:t>5</m:t></m:r></m:den></m:f><m:r><m:t>i$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="2" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 02" topic="純虛數的嚴密充要條件 · 增根排除陷阱">
+    <latex>(B) $m = 2$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(B)$m=2$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="3" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 03" topic="待定係數設未知複數 · 複數相等與模長計算">
+    <latex>(C) $\sqrt{5}$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(C)$</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>5</m:t></m:r></m:e></m:rad><m:r><m:t>$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="4" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 04" topic="阿根圖動點軌跡 · 線段垂直平分線幾何特徵">
+    <latex>(D) $-2$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(D)$−2$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="5" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 05" topic="複數乘法的幾何意義 · 幅角相加與向量旋轉">
+    <latex>(A) $\sqrt{2} + \sqrt{2}i$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(A)$</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>2</m:t></m:r></m:e></m:rad><m:r><m:t>+</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>2</m:t></m:r></m:e></m:rad><m:r><m:t>i$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="6" chapter="第一部分 單項選擇題 (題 01~06 · 滿分 30分)" qNum="題 06" topic="複平面圓周軌跡 · 幾何距離與模長極值">
+    <latex>(A) 最大值為 $7$，最小值為 $3$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(A)最大值為$7$，最小值為$3$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="7" chapter="第二部分 簡答與計算題 (題 07~08 · 滿分 30分)" qNum="題 07" topic="複數共軛方程求解 · 阿根圖兩點距離與三角形面積計算">
+    <latex>(a) $z = 2+2i, \; |z| = 2\sqrt{2}$；(b) $|AB| = 2\sqrt{2}, \; S_{\triangle OAB} = 4$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(a)$z=2+2i,</m:t></m:r><m:r><m:t>|z|=2</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>2</m:t></m:r></m:e></m:rad><m:r><m:t>$；(b)$|AB|=2</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>2</m:t></m:r></m:e></m:rad><m:r><m:t>,</m:t></m:r><m:sSub><m:e><m:r><m:t>S</m:t></m:r></m:e><m:sub><m:r><m:t>△OAB</m:t></m:r></m:sub></m:sSub><m:r><m:t>=4$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="8" chapter="第二部分 簡答與計算題 (題 07~08 · 滿分 30分)" qNum="題 08" topic="三角極式轉換 · 棣美弗定理高次冪與共軛倒數巧算">
+    <latex>(a) $z_0 = 2\left(\cos\frac{5\pi}{6} + i\sin\frac{5\pi}{6}\right)$；(b) $z_0^9 = -512i$；(c) $T = -128$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(a)$</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>0</m:t></m:r></m:sub></m:sSub><m:r><m:t>=2</m:t></m:r><m:r><m:t>(</m:t></m:r><m:r><m:rPr><m:sty m:val="p"/></m:rPr><m:t>cos</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>5π</m:t></m:r></m:num><m:den><m:r><m:t>6</m:t></m:r></m:den></m:f><m:r><m:t>+i</m:t></m:r><m:r><m:rPr><m:sty m:val="p"/></m:rPr><m:t>sin</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>5π</m:t></m:r></m:num><m:den><m:r><m:t>6</m:t></m:r></m:den></m:f><m:r><m:t>)</m:t></m:r><m:r><m:t>$；(b)$</m:t></m:r><m:sSubSup><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>0</m:t></m:r></m:sub><m:sup><m:r><m:t>9</m:t></m:r></m:sup></m:sSubSup><m:r><m:t>=−512i$；(c)$T=−128$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="9" chapter="第三部分 高階綜合壓軸題 (題 09~10 · 滿分 40分)" qNum="題 09" topic="棣美弗定理開四次方根 · 阿根圖內接正方形與距離平方和定值論證">
+    <latex>(a) $W = 16\left[\cos\left(-\frac{2\pi}{3}\right) + i\sin\left(-\frac{2\pi}{3}\right)\right]$；(b) $z_1=\sqrt{3}-i, z_2=1+\sqrt{3}i, z_3=-\sqrt{3}+i, z_4=-1-\sqrt{3}i$；(c)(i) 面積 $8$；(c)(ii) 定值 $32$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(a)$W=16</m:t></m:r><m:r><m:t>[</m:t></m:r><m:r><m:rPr><m:sty m:val="p"/></m:rPr><m:t>cos</m:t></m:r><m:r><m:t>(−</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>2π</m:t></m:r></m:num><m:den><m:r><m:t>3</m:t></m:r></m:den></m:f><m:r><m:t>)</m:t></m:r><m:r><m:t>+i</m:t></m:r><m:r><m:rPr><m:sty m:val="p"/></m:rPr><m:t>sin</m:t></m:r><m:r><m:t>(−</m:t></m:r><m:f><m:fPr><m:type m:val="bar"/></m:fPr><m:num><m:r><m:t>2π</m:t></m:r></m:num><m:den><m:r><m:t>3</m:t></m:r></m:den></m:f><m:r><m:t>)</m:t></m:r><m:r><m:t>]</m:t></m:r><m:r><m:t>$；(b)$</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>1</m:t></m:r></m:sub></m:sSub><m:r><m:t>=</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>−i,</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>2</m:t></m:r></m:sub></m:sSub><m:r><m:t>=1+</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>i,</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>3</m:t></m:r></m:sub></m:sSub><m:r><m:t>=−</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>+i,</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>4</m:t></m:r></m:sub></m:sSub><m:r><m:t>=−1−</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>i$；(c)(i)面積$8$；(c)(ii)定值$32$</m:t></m:r></m:oMath>
+  </problem>
+  <problem id="10" chapter="第三部分 高階綜合壓軸題 (題 09~10 · 滿分 40分)" qNum="題 10" topic="單位根因式分解 · 阿根圖正三角形面積、中垂線軌跡與閉圓盤極值幾何論證">
+    <latex>(a) $z_1=4, \alpha=-2+2\sqrt{3}i, \beta=-2-2\sqrt{3}i$；(b)(ii) $4224$；(b)(iii) 邊長 $4\sqrt{3}$, 面積 $12\sqrt{3}$；(c)(i) 線段 $AB$ 垂直平分線, 距離 $0$；(c)(ii) 最大值 $13$, 最小值 $7$</latex>
+    <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML"><m:r><m:t>(a)$</m:t></m:r><m:sSub><m:e><m:r><m:t>z</m:t></m:r></m:e><m:sub><m:r><m:t>1</m:t></m:r></m:sub></m:sSub><m:r><m:t>=4,α=−2+2</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>i,β=−2−2</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>i$；(b)(ii)$4224$；(b)(iii)邊長$4</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>$,面積$12</m:t></m:r><m:rad><m:radPr><m:degHide m:val="on"/></m:radPr><m:deg/><m:e><m:r><m:t>3</m:t></m:r></m:e></m:rad><m:r><m:t>$；(c)(i)線段$AB$垂直平分線,距離$0$；(c)(ii)最大值$13$,最小值$7$</m:t></m:r></m:oMath>
+  </problem>
+</ommlCompilation>

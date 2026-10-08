@@ -39,8 +39,9 @@ ok1 = check_html("demo/index.html")
 ok2 = check_html("demo/calculus.html")
 ok3 = check_html("demo/omml.html")
 ok4 = check_html("demo/vectors.html")
+ok5 = check_html("demo/complex.html")
 
-if ok1 and ok2 and ok3 and ok4:
+if ok1 and ok2 and ok3 and ok4 and ok5:
     print("\n🎉 All HTML dependencies verified successfully!")
 else:
     print("\n❌ Errors found in HTML dependencies!")

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>澳門四校聯考 · Topic 03: 複數代數、棣美弗定理與複平面幾何 互動專題簡報</title>
+  <meta name="description" content="澳門四高校聯合入學考試數學科專題突破 100 分鐘限時練習工作紙：複數代數、棣美弗定理與複平面幾何一頁一題互動投影簡報" />
+  <link rel="stylesheet" href="style.css?v=20261008" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' },
+      startup: { typeset: false }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+</head>
+<body>
+  <!-- 封面 -->
+  <section id="cover" class="cover">
+    <div class="cover-top-bar">
+      <button class="cover-teacher-btn" id="coverTeacherBtn" title="教師專用：設定課堂開放進度">⚙️ 課堂進度控制</button>
+    </div>
+    <div class="cover-inner">
+      <p class="cover-eyebrow">澳門四高校聯合入學考試 · 數學科 100 分鐘專題突破限時練習</p>
+      <h1 class="cover-title">Topic 03: 複數代數<br><span style="font-size: 0.85em; opacity: 0.95; color: #a855f7;">棣美弗定理與複平面幾何</span></h1>
+      <p class="cover-sub">分母有理化 · 純虛數判定 · 待定係數求模長 · 阿根圖軌跡與中垂線 · 複數旋轉與幅角相加 · 棣美弗定理開方 · 內接正多邊形與距離極值</p>
+      
+      <!-- 傳送門：切換至四校聯考真題、微積分、空間向量與 OMML 方程式庫 -->
+      <div style="margin: 14px 0 18px 0; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+        <a href="index.html" class="portal-link-btn" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);color:#93c5fd;text-decoration:none;border-radius:20px;font-size:0.9rem;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all .2s;">🎯 澳門四校聯考歷屆真題 ›</a>
+        <a href="calculus.html" class="portal-link-btn" style="display:inline-block;padding:8px 18px;background:rgba(59,130,246,0.2);border:1px solid rgba(96,165,250,0.4);color:#93c5fd;text-decoration:none;border-radius:20px;font-size:0.9rem;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all .2s;">📐 高三理組微積分篇 ›</a>
+        <a href="vectors.html" class="portal-link-btn" style="display:inline-block;padding:8px 18px;background:rgba(14,165,233,0.2);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;text-decoration:none;border-radius:20px;font-size:0.9rem;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all .2s;">📘 高三理組空間向量篇 ›</a>
+        <a href="omml.html" class="portal-link-btn" style="display:inline-block;padding:8px 18px;background:rgba(124,58,237,0.25);border:1px solid rgba(167,139,250,0.4);color:#ddd6fe;text-decoration:none;border-radius:20px;font-size:0.9rem;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all .2s;">📑 OMML 數學方程式庫 ›</a>
+        <a href="Topic03_複數代數與複平面幾何_參考答案_OMML對照手冊.docx" class="portal-link-btn" download style="display:inline-block;padding:8px 18px;background:rgba(16,185,129,0.25);border:1px solid rgba(52,211,153,0.4);color:#a7f3d0;text-decoration:none;border-radius:20px;font-size:0.9rem;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all .2s;">📥 下載 Word 答案手冊 (.docx)</a>
+      </div>
+
+      <div class="cover-chapters" id="coverChapters"></div>
+      <button class="cover-start" id="startBtn">開始 100 分鐘專題突破 →</button>
+      <p class="cover-hint">用 ← → 鍵換題 · K 鍵展開考點 · A 鍵展開解答 · Q 鍵放大題目 · 虛擬雷射筆與畫筆</p>
+    </div>
+  </section>
+
+  <!-- 主體 -->
+  <div id="app" class="app hidden">
+    <!-- 頂部列 -->
+    <header class="topbar">
+      <button class="home-btn" id="homeBtn" title="回封面">✦ 複數與複平面專題</button>
+      <div class="crumb" id="crumb"></div>
+      <div class="top-actions">
+        <button class="ghost-btn teacher-ctrl-btn" id="topTeacherBtn" title="課堂開放進度控制">⚙️ 課堂進度控制</button>
+        <button class="ghost-btn" id="tocToggle" title="目錄">☰ 目錄</button>
+      </div>
+    </header>
+
+    <div class="body">
+      <!-- 目錄側欄 -->
+      <aside class="toc" id="toc"></aside>
+
+      <!-- 舞台 -->
+      <main class="stage">
+        <div class="slide" id="slide"></div>
+
+        <!-- 底部控制列 -->
+        <div class="controlbar">
+          <button class="nav-btn" id="prevBtn">‹ 上一頁</button>
+          <div class="progress">
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <span class="progress-text" id="progressText">1 / 1</span>
+          </div>
+          <button class="nav-btn" id="nextBtn">下一頁 ›</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- 授課教具：畫筆畫布、雷射點、浮動工具列 -->
+    <canvas id="penCanvas" class="pen-canvas"></canvas>
+    <div id="laserDot" class="laser-dot hidden"></div>
+    <div id="dock" class="dock">
+      <button class="dbtn" id="dkSidebar" title="收合／展開側欄">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg>
+      </button>
+      <button class="dbtn" id="dkPrev" title="上一頁 (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
+      </button>
+      <button class="dbtn" id="dkNext" title="下一頁 (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
+      </button>
+      <div class="dsep"></div>
+      <button class="dbtn" id="dkLaser" title="雷射筆">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <button class="dbtn" id="dkPen" title="畫筆">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </button>
+      <div class="dcolors hidden" id="dkColors">
+        <button class="dcolor active" data-c="#e11d48" style="--sc:#e11d48" title="紅"></button>
+        <button class="dcolor" data-c="#2563eb" style="--sc:#2563eb" title="藍"></button>
+        <button class="dcolor" data-c="#059669" style="--sc:#059669" title="綠"></button>
+        <button class="dcolor" data-c="#f59e0b" style="--sc:#f59e0b" title="黃"></button>
+        <button class="dcolor" data-c="#111827" style="--sc:#111827" title="黑"></button>
+        <button class="dbtn derase" id="dkErase" title="橡皮擦">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15l7-7 6 6-4 4H8z"/><line x1="4" y1="21" x2="20" y2="21"/></svg>
+        </button>
+      </div>
+      <button class="dbtn" id="dkClear" title="清除所有筆跡 (C)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      </button>
+      <div class="dsep"></div>
+      <button class="dbtn" id="dkFull" title="全螢幕">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 黑板全螢幕放大視窗（題目、解答與圖解） -->
+  <div id="blackboardModal" class="bb-modal hidden">
+    <div class="bb-dialog">
+      <div class="bb-header">
+        <span class="bb-title" id="bbTitle">全螢幕精講黑板</span>
+        <div class="bb-actions">
+          <span class="bb-hint">按 Esc 或點擊關閉</span>
+          <button class="bb-close-btn" id="bbCloseBtn">✕ 關閉</button>
+        </div>
+      </div>
+      <div class="bb-content" id="bbContent"></div>
+    </div>
+  </div>
+
+  <!-- 教師身分驗證 PIN 碼彈窗 -->
+  <div id="pinModal" class="modal-overlay hidden">
+    <div class="modal-card pin-card">
+      <div class="modal-head">
+        <div class="modal-title">🔐 教師身分驗證</div>
+        <button class="modal-close" id="pinCloseBtn">✕</button>
+      </div>
+      <div class="pin-body">
+        <p class="pin-desc">請輸入教師管理 PIN 碼（預設：<b>8888</b>），以切換複數專題進度與開放權限：</p>
+        <div class="pin-input-row">
+          <input type="password" id="pinInput" maxlength="8" placeholder="請輸入 4 位數 PIN 碼" autocomplete="off" />
+          <button class="btn-primary" id="pinSubmitBtn">進入面板</button>
+        </div>
+        <div class="pin-err hidden" id="pinError">⚠️ PIN 碼不正確，請重新輸入（預設為 8888）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 課堂實驗開放進度控制教師面板 -->
+  <div id="teacherModal" class="modal-overlay hidden">
+    <div class="modal-card teacher-card">
+      <div class="modal-head">
+        <div class="modal-title">⚙️ 複數專題 · 課堂進度控制</div>
+        <button class="modal-close" id="teacherCloseBtn">✕</button>
+      </div>
+      <div class="teacher-body">
+        <div class="teacher-tip">
+          💡 <b>以學生進度為第一原則</b>：僅勾選當前課堂開放的題型部分，學生開啟後僅能查看許可部分，未解鎖部分與解答完全隱藏。
+        </div>
+
+        <!-- 快速進度按鈕 -->
+        <div class="preset-section">
+          <div class="section-label">⚡ 快速進度選取（依題型部分）：</div>
+          <div class="preset-grid">
+            <button class="preset-btn" data-preset="mc">【第一部分】單項選擇題 (6題 · 30分)</button>
+            <button class="preset-btn" data-preset="calc">【第二部分】簡答計算題 (2題 · 30分)</button>
+            <button class="preset-btn" data-preset="exam">【第三部分】高階壓軸題 (2題 · 40分)</button>
+            <button class="preset-btn preset-secondary" data-preset="part1-2">【前兩部分基礎綜合】(8題 · 60分)</button>
+            <button class="preset-btn preset-all" data-preset="all">【全卷開放 · 100分鐘模考】(10題 · 100分)</button>
+            <button class="preset-btn preset-clear" data-preset="none">【全部清空】</button>
+          </div>
+        </div>
+
+        <!-- 自由勾選清單 -->
+        <div class="papers-section">
+          <div class="papers-header">
+            <div class="section-label">📋 3 大題型部分自由勾選（共 10 題卡 · 滿分 100 分 · 100% 原生 OMML）：</div>
+            <span class="selected-count" id="selectedCountBadge">已選 0 部分 (0 題)</span>
+          </div>
+          <div class="paper-year-grid" id="paperCheckboxContainer">
+            <!-- 由 JS 動態生成題型卡片與勾選框 -->
+          </div>
+        </div>
+
+        <!-- 操作按鈕列 -->
+        <div class="teacher-actions">
+          <button class="btn-action btn-qr" id="btnShowQr">
+            <span>📱 大螢幕 QR 碼</span>
+          </button>
+          <button class="btn-action btn-copy" id="btnCopyStudentUrl">
+            <span>📋 複製學生網址</span>
+          </button>
+          <button class="btn-action btn-save" id="btnSaveApply">
+            <span>💾 儲存並在當前生效</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 大螢幕 QR 碼視窗 -->
+  <div id="qrModal" class="modal-overlay hidden">
+    <div class="modal-card qr-card">
+      <div class="modal-head">
+        <div class="modal-title">📱 學生專用大螢幕掃碼同步</div>
+        <button class="modal-close" id="qrCloseBtn">✕</button>
+      </div>
+      <div class="qr-body">
+        <p class="qr-sub">請同學使用 iPad 或手機相機掃描，立即進入本週開放之複數代數與複平面幾何專題：</p>
+        <div class="qr-code-box" id="qrCodeContainer"></div>
+        <div class="qr-info-box">
+          <div class="qr-info-papers" id="qrActivePapersText">已開放題型：載入中...</div>
+          <div class="qr-url-row">
+            <input type="text" id="qrUrlInput" readonly />
+            <button class="btn-sm" id="btnCopyQrUrl">複製連結</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 提示容器 -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- 純前端向量 QR 碼生成模組 -->
+  <script src="qrcode.min.js?v=20261008"></script>
+  <script src="svg.js?v=20261008"></script>
+
+  <!-- 複數專屬註冊表與進度控制設置 -->
+  <script>
+    window.STORAGE_KEY = 'complex_allowed_papers';
+    window.PAPER_REGISTRY = [
+      { id: 'complex-01', year: '100分鐘專題', paper: '選擇題', name: '第一部分 單項選擇題 (題 01~06)', ch: '第一部分 單項選擇題', count: 6, color: '#2563eb' },
+      { id: 'complex-02', year: '100分鐘專題', paper: '計算題', name: '第二部分 簡答與計算題 (題 07~08)', ch: '第二部分 簡答與計算題', count: 2, color: '#0ea5e9' },
+      { id: 'complex-03', year: '100分鐘專題', paper: '壓軸題', name: '第三部分 高階綜合壓軸題 (題 09~10)', ch: '第三部分 高階綜合壓軸題', count: 2, color: '#7c3aed' }
+    ];
+
+    window.CUSTOM_PRESET_HANDLER = function(presetKey, registry) {
+      if (presetKey === 'mc') return ['complex-01'];
+      if (presetKey === 'calc') return ['complex-02'];
+      if (presetKey === 'exam') return ['complex-03'];
+      if (presetKey === 'part1-2') return ['complex-01', 'complex-02'];
+      if (presetKey === 'all') return registry.map(p => p.id);
+      if (presetKey === 'none') return [];
+      return null;
+    };
+
+    window.CUSTOM_WEEK_PARAM_HANDLER = function(weekParam, registry) {
+      if (weekParam === 'mc') return ['complex-01'];
+      if (weekParam === 'calc') return ['complex-02'];
+      if (weekParam === 'exam') return ['complex-03'];
+      if (weekParam === 'part1-2') return ['complex-01', 'complex-02'];
+      return null;
+    };
+  </script>
+
+  <!-- 載入複數專題 3 大題型題目數據庫 -->
+  <script src="ch-complex-01.js?v=20261008"></script>
+  <script src="ch-complex-02.js?v=20261008"></script>
+  <script src="ch-complex-03.js?v=20261008"></script>
+
+  <!-- 簡報導覽與渲染引擎 -->
+  <script src="engine.js?v=20261008"></script>
+</body>
+</html>
