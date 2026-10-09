@@ -29,7 +29,7 @@ sup_2025_slides = [
                 "因此 $\\angle APB = x$ 即為二面角之平面角。在 Rt$\\triangle PAB$ 中，$\\tan x = \\frac{AB}{AP} = \\frac{a}{\\frac{\\sqrt{3}}{2}a} = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}$。",
                 "(d) 四個側面與底面面積：",
                 "1. 底面 $S_{ABCD} = a^2$；2. $S_{\\triangle VAD} = \\frac{\\sqrt{3}}{4}a^2$；",
-                "3. Rt$\\triangle VAB$ 與 Rt$\\triangle VDC$ 全等，面積各自為 $\\frac{1}{2} a^2$，兩者之和為 $a^2$；",
+                "3. $\\text{Rt}\\triangle VAB ≌ \\text{Rt}\\triangle VDC$（全等），面積各自為 $\\frac{1}{2} a^2$，兩者之和為 $a^2$；",
                 "4. $\\triangle VBC$ 中，三邊為 $VB = VC = \\sqrt{2}a, BC = a$，高為 $\\sqrt{(\\sqrt{2}a)^2 - (a/2)^2} = \\frac{\\sqrt{7}}{2}a$，面積為 $\\frac{1}{2} \\cdot a \\cdot \\frac{\\sqrt{7}}{2}a = \\frac{\\sqrt{7}}{4}a^2$。",
                 "表面積總和 $S = a^2 + \\frac{\\sqrt{3}}{4}a^2 + a^2 + \\frac{\\sqrt{7}}{4}a^2 = 2a^2 + \\frac{\\sqrt{3}+\\sqrt{7}}{4}a^2 = \\frac{8 + \\sqrt{3} + \\sqrt{7}}{4}a^2$。"
             ],
