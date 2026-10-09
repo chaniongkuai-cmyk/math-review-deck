@@ -24,7 +24,8 @@
   - 空間向量思維本專題頁：https://jtchen1225-a11y.github.io/math-review-deck/vectors.html
   - 在線 OMML 數學方程式庫：https://jtchen1225-a11y.github.io/math-review-deck/omml.html
 - **最新完成之架構革新**：
-  1. **複數代數專題獨立入口與五頁互通傳送門**：`demo/complex.html` 與首頁、微積分篇、空間向量篇、OMML 庫一鍵無縫切換，彼此完全獨立、不產生任何內容重疊。
+  1. **四校聯考主頁純淨化（Zero-Distraction Mode）**：依用戶要求，`index.html` 移除所有跳轉至微積分篇、空間向量篇、複數專題與 OMML 庫之傳送門按鈕，首頁 100% 僅保留純粹之四校聯考歷屆真題（2021～2025 年 10 卷 · 125 題）。各延伸專題（微積分、空間向量、複數專題、OMML 庫）維持獨立頁面與短網址存取。
+  2. **複數代數專題獨立入口**：`demo/complex.html` 與專屬短網址 `https://www.daydaystudy.top/complex` 獨立運作。
   2. **複數 3 大模組完整解構與轉換**：
      - 第一部分：單項選擇題 (題 01~06 · 6 題卡 · 30分)
      - 第二部分：簡答與計算題 (題 07~08 · 2 題卡 · 30分)
