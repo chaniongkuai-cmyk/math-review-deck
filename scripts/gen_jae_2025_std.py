@@ -505,7 +505,7 @@ std_2025_slides = [
     # Q19 (Problem 4)
     {
         "year": "2025", "paper": "正卷", "qNum": "解答題 第4題", "topic": "平面幾何 · 相似三角形判定與比例線段", "score": "8分",
-        "q": "在 $\\triangle ABC$ 中，$AB = AC$，$AD = AE$，點 $F$ 在邊 $AC$ 上，$DF$ 與 $BE$ 相交於點 $G$，且 $\\angle AFD = \\DEB$。<br>(a) 證明 $\\triangle DEG \\sim \\triangle DFE$。(3分)<br>(b) 證明 $\\triangle DEF \\sim \\triangle BDE$。(3分)<br>(c) 證明 $DG \\cdot DF = DB \\cdot EF$。(2分)",
+        "q": "在 $\\triangle ABC$ 中，$AB = AC$，$AD = AE$，點 $F$ 在邊 $AC$ 上，$DF$ 與 $BE$ 相交於點 $G$，且 $\\angle AFD = \\angle DEB$。<br>(a) 證明 $\\triangle DEG \\sim \\triangle DFE$。(3分)<br>(b) 證明 $\\triangle DEF \\sim \\triangle BDE$。(3分)<br>(c) 證明 $DG \\cdot DF = DB \\cdot EF$。(2分)",
         "knowledge": {
             "formulas": ["\\text{AA 相似判定：兩角對應相等之兩三角形相似}", "\\text{相似比：}\\frac{DE}{DF} = \\frac{DG}{DE} \\implies DE^2 = DG \\cdot DF"],
             "points": ["<b>公共角與已知角</b>：(a) 中 $\\angle D$ 為公共角，直接 AA 相似。", "<b>等腰三角形底角相等</b>：$AB=AC \\implies \\angle B=\\angle C$, $AD=AE \\implies \\angle ADE=\\angle AED$。"],

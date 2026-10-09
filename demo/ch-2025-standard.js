@@ -749,7 +749,7 @@
       "qNum": "解答題 第4題",
       "topic": "平面幾何 · 相似三角形判定與比例線段",
       "score": "8分",
-      "q": "在 $\\triangle ABC$ 中，$AB = AC$，$AD = AE$，點 $F$ 在邊 $AC$ 上，$DF$ 與 $BE$ 相交於點 $G$，且 $\\angle AFD = \\DEB$。<br>(a) 證明 $\\triangle DEG \\sim \\triangle DFE$。(3分)<br>(b) 證明 $\\triangle DEF \\sim \\triangle BDE$。(3分)<br>(c) 證明 $DG \\cdot DF = DB \\cdot EF$。(2分)",
+      "q": "在 $\\triangle ABC$ 中，$AB = AC$，$AD = AE$，點 $F$ 在邊 $AC$ 上，$DF$ 與 $BE$ 相交於點 $G$，且 $\\angle AFD = \\angle DEB$。<br>(a) 證明 $\\triangle DEG \\sim \\triangle DFE$。(3分)<br>(b) 證明 $\\triangle DEF \\sim \\triangle BDE$。(3分)<br>(c) 證明 $DG \\cdot DF = DB \\cdot EF$。(2分)",
       "knowledge": {
             "formulas": [
                   "\\text{AA 相似判定：兩角對應相等之兩三角形相似}",
