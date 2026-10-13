@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>澳門四校聯考（JAE）數學題解速查 · 手機與平板專用版</title>
+  <meta name="description" content="澳門四校聯考（JAE）2021-2025數學真題題號矩陣速查題解手冊，支援手機與平板快速查詢。" />
+  
+  <!-- Google Fonts & Tailwind-like CSS variables -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- MathJax 配置 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' },
+      startup: { typeset: false }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent: #7c3aed;
+      --emerald: #059669;
+      --amber: #d97706;
+      --rose: #e11d48;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 90px; /* 預留底部浮動列高度 */
+    }
+
+    /* 頂部導航列 */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 700;
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .mode-switch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .mode-switch-btn:active {
+      transform: scale(0.96);
+      background: #e2e8f0;
+    }
+
+    /* 篩選與選擇控制面板 */
+    .control-panel {
+      padding: 14px 16px 8px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 年份水平滾動標籤 */
+    .year-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .year-scroll::-webkit-scrollbar { display: none; }
+
+    .year-pill {
+      flex: 0 0 auto;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #475569;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .year-pill.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    }
+
+    /* 卷別分段切換按鈕 */
+    .paper-segmented {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 4px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .paper-tab {
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .paper-tab.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 題號矩陣區域 */
+    .matrix-section {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 14px;
+      margin-top: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .matrix-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .matrix-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .matrix-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .grid-btn {
+      aspect-ratio: 1.1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .grid-btn .q-idx {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    .grid-btn .q-sub {
+      font-size: 9px;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-top: 1px;
+    }
+
+    .grid-btn:active {
+      transform: scale(0.94);
+    }
+
+    .grid-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .grid-btn.active .q-idx,
+    .grid-btn.active .q-sub {
+      color: #fff;
+    }
+
+    .grid-btn.problem-type {
+      background: #faf5ff;
+      border-color: #e9d5ff;
+    }
+    .grid-btn.problem-type .q-idx { color: #6b21a8; }
+    .grid-btn.problem-type.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+    }
+    .grid-btn.problem-type.active .q-idx,
+    .grid-btn.problem-type.active .q-sub { color: #fff; }
+
+    /* 題解詳情展示卡片 */
+    .detail-container {
+      max-width: 900px;
+      margin: 14px auto 0;
+      padding: 0 16px;
+    }
+
+    .detail-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 詳情卡頂部 */
+    .card-topbar {
+      padding: 14px 16px 12px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .badge-primary {
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      background: var(--primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-topic {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1e40af;
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .badge-score {
+      font-size: 11px;
+      font-weight: 800;
+      color: #475569;
+      background: #e2e8f0;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* 題目題幹 */
+    .question-box {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #64748b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .question-text {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: #0f172a;
+      word-break: break-word;
+    }
+
+    /* 選擇題選項格 */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    @media (min-width: 600px) {
+      .options-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .opt-card {
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* 答案直覺提示橫幅 */
+    .answer-banner {
+      background: #ecfdf5;
+      border-left: 4px solid var(--emerald);
+      padding: 12px 16px;
+      margin: 16px;
+      border-radius: 0 10px 10px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .ans-tag {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--emerald);
+      white-space: nowrap;
+    }
+
+    .ans-val {
+      font-size: 16px;
+      font-weight: 900;
+      color: #065f46;
+      word-break: break-all;
+    }
+
+    /* 折疊板塊組 */
+    .collapse-box {
+      margin: 0 16px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .collapse-trigger {
+      width: 100%;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1e293b;
+      transition: background 0.2s;
+    }
+
+    .collapse-trigger:active { background: #f1f5f9; }
+
+    .collapse-icon {
+      font-size: 12px;
+      color: #94a3b8;
+      transition: transform 0.2s ease;
+    }
+    .collapse-box.open .collapse-icon {
+      transform: rotate(180deg);
+    }
+
+    .collapse-content {
+      display: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+    }
+    .collapse-box.open .collapse-content {
+      display: block;
+    }
+
+    /* 核心公式與考點樣式 */
+    .formula-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .formula-badge {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    .points-list {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .points-list li { margin-bottom: 6px; }
+
+    .pitfall-card {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #92400e;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    /* 步驟詳解 */
+    .step-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+    }
+    .step-item::before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: var(--primary);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* 秒解速解 */
+    .quicktip-box {
+      background: #faf5ff;
+      border: 1px solid #f3e8ff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      color: #6b21a8;
+      line-height: 1.6;
+    }
+
+    /* 底部懸浮快速翻題控制列 */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    }
+
+    .nav-ctrl-btn {
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #1e293b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+    }
+    .nav-ctrl-btn:active {
+      background: #f1f5f9;
+      transform: scale(0.96);
+    }
+    .nav-ctrl-btn:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .nav-curr-label {
+      flex: 1;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 公式橫向捲動保護 */
+    .mjx-chtml {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 2px;
+    }
+
+    /* 載入中骨架 */
+    .loading-state {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導航列 -->
+  <header class="top-header">
+    <div class="brand-group">
+      <div class="brand-title">
+        <span>JAE 數學速查</span>
+        <span class="brand-tag">手機版</span>
+      </div>
+      <div class="brand-sub">澳門四校聯考 · 一鍵按題查詳解</div>
+    </div>
+    <a href="index.html" class="mode-switch-btn" title="前往教師課堂投影簡報版">
+      <span>🖥️ 電腦簡報版</span>
+    </a>
+  </header>
+
+  <!-- 頂部篩選面板 -->
+  <section class="control-panel">
+    <!-- 年份滑動選單 -->
+    <div class="year-scroll" id="yearScroll">
+      <button class="year-pill active" data-year="2025">2025 年</button>
+      <button class="year-pill" data-year="2024">2024 年</button>
+      <button class="year-pill" data-year="2023">2023 年</button>
+      <button class="year-pill" data-year="2022">2022 年</button>
+      <button class="year-pill" data-year="2021">2021 年</button>
+    </div>
+
+    <!-- 卷別切換 -->
+    <div class="paper-segmented" id="paperSegmented">
+      <button class="paper-tab active" data-paper="正卷">📘 數學正卷 (20 題)</button>
+      <button class="paper-tab" data-paper="附加卷">🔮 數學附加卷 (5 題)</button>
+    </div>
+
+    <!-- 題號矩陣按鈕區 -->
+    <div class="matrix-section">
+      <!-- 選擇題組 (若有) -->
+      <div id="mcSection">
+        <div class="matrix-header">
+          <span class="matrix-label">📝 選擇題 (每題 4~5 分)</span>
+          <span class="matrix-count" id="mcCount">15 題</span>
+        </div>
+        <div class="grid-container" id="mcGrid"></div>
+      </div>
+
+      <!-- 解答題組 -->
+      <div id="problemSection">
+        <div class="matrix-header">
+          <span class="matrix-label" id="problemLabel">📐 解答題 (每題 8~10 分)</span>
+          <span class="matrix-count" id="problemCount">5 題</span>
+        </div>
+        <div class="grid-container" id="problemGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 題解詳情展示卡片 -->
+  <main class="detail-container">
+    <div class="detail-card" id="detailCard">
+      <div class="loading-state">載入試題資料中...</div>
+    </div>
+  </main>
+
+  <!-- 底部懸浮快速換題列 -->
+  <footer class="bottom-bar">
+    <button class="nav-ctrl-btn" id="prevBtn">
+      <span>◀</span>
+      <span>上一題</span>
+    </button>
+    <div class="nav-curr-label" id="currLabel">正在載入...</div>
+    <button class="nav-ctrl-btn" id="nextBtn">
+      <span>下一題</span>
+      <span>▶</span>
+    </button>
+  </footer>
+
+  <!-- 載入全部 10 個章節題庫資料 (共 125 題) -->
+  <script src="ch-2025-standard.js?v=20261013"></script>
+  <script src="ch-2025-supp.js?v=20261013"></script>
+  <script src="ch-2024-standard.js?v=20261013"></script>
+  <script src="ch-2024-supp.js?v=20261013"></script>
+  <script src="ch-2023-standard.js?v=20261013"></script>
+  <script src="ch-2023-supp.js?v=20261013"></script>
+  <script src="ch-2022-standard.js?v=20261013"></script>
+  <script src="ch-2022-supp.js?v=20261013"></script>
+  <script src="ch-2021-standard.js?v=20261013"></script>
+  <script src="ch-2021-supp.js?v=20261013"></script>
+
+  <!-- 手機版速查核心應用邏輯 -->
+  <script>
+    (function() {
+      // 狀態管理
+      const state = {
+        selectedYear: '2025',
+        selectedPaper: '正卷',
+        selectedSlideIdx: 0 // 當前卷內的題目 index (0 ~ n-1)
+      };
+
+      const DECK = window.DECK || [];
+
+      // DOM 節點
+      const yearScroll = document.getElementById('yearScroll');
+      const paperSegmented = document.getElementById('paperSegmented');
+      const mcSection = document.getElementById('mcSection');
+      const mcCount = document.getElementById('mcCount');
+      const mcGrid = document.getElementById('mcGrid');
+      const problemSection = document.getElementById('problemSection');
+      const problemLabel = document.getElementById('problemLabel');
+      const problemCount = document.getElementById('problemCount');
+      const problemGrid = document.getElementById('problemGrid');
+      const detailCard = document.getElementById('detailCard');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currLabel = document.getElementById('currLabel');
+
+      // 取得當前選中的章節對象
+      function getCurrentChapter() {
+        return DECK.find(d => d.year === state.selectedYear && d.paper === state.selectedPaper) || null;
+      }
+
+      // 初始化矩陣視圖
+      function renderMatrix() {
+        const ch = getCurrentChapter();
+        if (!ch || !ch.slides || !ch.slides.length) {
+          mcGrid.innerHTML = '';
+          problemGrid.innerHTML = '';
+          detailCard.innerHTML = '<div class="loading-state">暫無此卷試題資料</div>';
+          return;
+        }
+
+        const slides = ch.slides;
+        mcGrid.innerHTML = '';
+        problemGrid.innerHTML = '';
+
+        // 判斷該卷是否有選擇題
+        const hasMC = ch.paper === '正卷';
+
+        if (hasMC) {
+          mcSection.style.display = 'block';
+          problemLabel.innerHTML = '📐 解答題 (每題 8~10 分)';
+
+          // 2021 正卷與 2022-2025 正卷均為 15 題選擇 + 5 題解答
+          const mcSlides = slides.slice(0, 15);
+          const probSlides = slides.slice(15);
+
+          mcCount.innerText = `${mcSlides.length} 題`;
+          problemCount.innerText = `${probSlides.length} 題`;
+
+          // 渲染選擇題按鈕 (1 ~ 15)
+          mcSlides.forEach((s, idx) => {
+            const btn = document.createElement('button');
+            btn.className = `grid-btn ${state.selectedSlideIdx === idx ? 'active' : ''}`;
+            btn.innerHTML = `<span class="q-idx">${idx + 1}</span><span class="q-sub">選擇</span>`;
+            btn.addEventListener('click', () => selectQuestion(idx));
+            mcGrid.appendChild(btn);
+          });
+
+          // 渲染解答題按鈕 (16 ~ 20 / 解1 ~ 解5)
+          probSlides.forEach((s, pIdx) => {
+            const idx = 15 + pIdx;
+            const btn = document.createElement('button');
+            btn.className = `grid-btn problem-type ${state.selectedSlideIdx === idx ? 'active' : ''}`;
+            btn.innerHTML = `<span class="q-idx">解${pIdx + 1}</span><span class="q-sub">第${idx + 1}題</span>`;
+            btn.addEventListener('click', () => selectQuestion(idx));
+            problemGrid.appendChild(btn);
+          });
+        } else {
+          // 附加卷：全為解答題 (共 5 題)
+          mcSection.style.display = 'none';
+          problemLabel.innerHTML = '🔮 附加卷解答題 (每題 20 分)';
+          problemCount.innerText = `${slides.length} 題`;
+
+          slides.forEach((s, idx) => {
+            const btn = document.createElement('button');
+            btn.className = `grid-btn problem-type ${state.selectedSlideIdx === idx ? 'active' : ''}`;
+            btn.innerHTML = `<span class="q-idx">第${idx + 1}題</span><span class="q-sub">解答</span>`;
+            btn.addEventListener('click', () => selectQuestion(idx));
+            problemGrid.appendChild(btn);
+          });
+        }
+
+        // 確保目前 index 不超出範圍
+        if (state.selectedSlideIdx >= slides.length) {
+          state.selectedSlideIdx = 0;
+        }
+
+        renderDetailCard();
+      }
+
+      // 切換題目
+      function selectQuestion(idx, shouldScroll = true) {
+        state.selectedSlideIdx = idx;
+
+        // 更新按鈕 active 樣式
+        document.querySelectorAll('.grid-btn').forEach((b, i) => {
+          if (i === idx) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        renderDetailCard();
+
+        if (shouldScroll) {
+          // 平滑滾動到題解卡片
+          detailCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      // 渲染題目詳解卡片
+      function renderDetailCard() {
+        const ch = getCurrentChapter();
+        if (!ch) return;
+        const s = ch.slides[state.selectedSlideIdx];
+        if (!s) return;
+
+        // 答案處理
+        const rawAns = (s.solution && s.solution.ans) || s.ans || '';
+        let ansDisplay = rawAns;
+        if (ansDisplay.startsWith('$') && ansDisplay.endsWith('$')) {
+          // 保留 LaTeX
+        }
+
+        // 建立卡片 HTML
+        let html = `
+          <div class="card-topbar">
+            <div class="tag-row">
+              <span class="badge-primary">${s.year}年 ${s.paper}</span>
+              <span class="badge-score">${s.qNum || ('第 ' + (state.selectedSlideIdx + 1) + ' 題')}</span>
+              ${s.score ? `<span class="badge-score">${s.score}</span>` : ''}
+              ${s.topic ? `<span class="badge-topic">${s.topic}</span>` : ''}
+            </div>
+          </div>
+
+          <!-- 題幹區 -->
+          <div class="question-box">
+            <div class="section-title">📝 試題題幹與條件</div>
+            <div class="question-text">${s.q}</div>
+            ${s.options && s.options.length ? `
+              <div class="options-grid">
+                ${s.options.map(opt => `<div class="opt-card">${opt}</div>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- 正確答案橫幅 -->
+          ${rawAns ? `
+            <div class="answer-banner">
+              <span class="ans-tag">🎯 正確答案：</span>
+              <span class="ans-val">${ansDisplay}</span>
+            </div>
+          ` : ''}
+
+          <!-- 折疊卡 1：核心考點與必背公式 (預設展開) -->
+          ${s.knowledge ? `
+            <div class="collapse-box open" id="boxKnowledge">
+              <button class="collapse-trigger" onclick="toggleCollapse('boxKnowledge')">
+                <span>🎯 核心考點 & 必背公式</span>
+                <span class="collapse-icon">▼</span>
+              </button>
+              <div class="collapse-content">
+                ${s.knowledge.formulas && s.knowledge.formulas.length ? `
+                  <div class="formula-list">
+                    ${s.knowledge.formulas.map(f => `<div class="formula-badge">$$${f}$$</div>`).join('')}
+                  </div>
+                ` : ''}
+                ${s.knowledge.points && s.knowledge.points.length ? `
+                  <ul class="points-list">
+                    ${s.knowledge.points.map(pt => `<li>${pt}</li>`).join('')}
+                  </ul>
+                ` : ''}
+                ${s.knowledge.pitfall ? `
+                  <div class="pitfall-card">
+                    <span>⚠️</span>
+                    <div><b>避坑錦囊：</b>${s.knowledge.pitfall}</div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- 折疊卡 2：解題思維分析 -->
+          ${s.solution && s.solution.thinking ? `
+            <div class="collapse-box open" id="boxThinking">
+              <button class="collapse-trigger" onclick="toggleCollapse('boxThinking')">
+                <span>💡 解題突破思路</span>
+                <span class="collapse-icon">▼</span>
+              </button>
+              <div class="collapse-content">
+                <p>${s.solution.thinking}</p>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- 折疊卡 3：規範解答步驟 -->
+          ${s.solution && s.solution.steps && s.solution.steps.length ? `
+            <div class="collapse-box open" id="boxSteps">
+              <button class="collapse-trigger" onclick="toggleCollapse('boxSteps')">
+                <span>📋 規範解析步驟</span>
+                <span class="collapse-icon">▼</span>
+              </button>
+              <div class="collapse-content">
+                ${s.solution.steps.map(step => `<div class="step-item">${step}</div>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- 折疊卡 4：考試秒解/速解技巧 -->
+          ${s.solution && s.solution.quickTip ? `
+            <div class="collapse-box open" id="boxQuickTip">
+              <button class="collapse-trigger" onclick="toggleCollapse('boxQuickTip')">
+                <span>⚡ 名師考場速解秘技</span>
+                <span class="collapse-icon">▼</span>
+              </button>
+              <div class="collapse-content">
+                <div class="quicktip-box">${s.solution.quickTip}</div>
+              </div>
+            </div>
+          ` : ''}
+        `;
+
+        detailCard.innerHTML = html;
+
+        // 觸發 MathJax 數學公式渲染
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise([detailCard]).catch(err => console.warn('MathJax typeset error:', err));
+        }
+
+        // 更新底部導航列狀態
+        updateBottomBar(ch.slides.length);
+      }
+
+      // 更新底部浮動條
+      function updateBottomBar(total) {
+        prevBtn.disabled = state.selectedSlideIdx <= 0;
+        nextBtn.disabled = state.selectedSlideIdx >= total - 1;
+        currLabel.innerText = `${state.selectedYear} ${state.selectedPaper} (${state.selectedSlideIdx + 1}/${total})`;
+      }
+
+      // 折疊卡展開切換
+      window.toggleCollapse = function(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('open');
+      };
+
+      // 監聽年份點擊
+      yearScroll.addEventListener('click', (e) => {
+        const btn = e.target.closest('.year-pill');
+        if (!btn) return;
+        document.querySelectorAll('.year-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.selectedYear = btn.dataset.year;
+        state.selectedSlideIdx = 0;
+        renderMatrix();
+      });
+
+      // 監聽卷別切換
+      paperSegmented.addEventListener('click', (e) => {
+        const btn = e.target.closest('.paper-tab');
+        if (!btn) return;
+        document.querySelectorAll('.paper-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.selectedPaper = btn.dataset.paper;
+        state.selectedSlideIdx = 0;
+        renderMatrix();
+      });
+
+      // 底部上一題/下一題
+      prevBtn.addEventListener('click', () => {
+        if (state.selectedSlideIdx > 0) {
+          selectQuestion(state.selectedSlideIdx - 1);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const ch = getCurrentChapter();
+        if (ch && state.selectedSlideIdx < ch.slides.length - 1) {
+          selectQuestion(state.selectedSlideIdx + 1);
+        }
+      });
+
+      // 點擊底部標籤自動滾動回矩陣選題
+      currLabel.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 支援鍵盤左右箭頭切換
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+      });
+
+      // 初始化第一次渲染
+      window.addEventListener('DOMContentLoaded', () => {
+        renderMatrix();
+      });
+    })();
+  </script>
+</body>
+</html>
