@@ -20,7 +20,17 @@
         processEscapes: true
       },
       svg: { fontCache: 'global' },
-      startup: { typeset: false }
+      startup: {
+        typeset: false,
+        ready: function() {
+          MathJax.startup.defaultReady();
+          MathJax.startup.promise.then(function() {
+            if (typeof window.triggerMathTypeset === 'function') {
+              window.triggerMathTypeset();
+            }
+          });
+        }
+      }
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
@@ -710,7 +720,36 @@
       const nextBtn = document.getElementById('nextBtn');
       const currLabel = document.getElementById('currLabel');
 
-      // 取得當前選中的章節對象
+      // ---- MathJax 排版佇列與重試機制（非同步載入保護）----
+      let mathPromise = Promise.resolve();
+      function queueTypeset(el) {
+        if (!el) return Promise.resolve();
+        const els = Array.isArray(el) ? el.filter(Boolean) : [el];
+        if (!els.length) return Promise.resolve();
+        mathPromise = mathPromise.catch(() => {}).then(() => {
+          if (window.MathJax && MathJax.typesetPromise) {
+            if (MathJax.typesetClear) {
+              try { MathJax.typesetClear(els); } catch (e) {}
+            }
+            return MathJax.typesetPromise(els);
+          }
+        }).catch(err => console.warn('MathJax error:', err));
+        return mathPromise;
+      }
+
+      function typeset(el, tries = 0) {
+        if (!el) return;
+        if (window.MathJax && MathJax.typesetPromise) {
+          queueTypeset(el);
+        } else if (tries < 100) {
+          setTimeout(() => typeset(el, tries + 1), 100);
+        }
+      }
+
+      window.triggerMathTypeset = function() {
+        const card = document.getElementById('detailCard');
+        if (card) typeset(card);
+      };
       function getCurrentChapter() {
         return DECK.find(d => d.year === state.selectedYear && d.paper === state.selectedPaper) || null;
       }
@@ -919,10 +958,8 @@
 
         detailCard.innerHTML = html;
 
-        // 觸發 MathJax 數學公式渲染
-        if (window.MathJax && window.MathJax.typesetPromise) {
-          window.MathJax.typesetPromise([detailCard]).catch(err => console.warn('MathJax typeset error:', err));
-        }
+        // 觸發 MathJax 數學公式渲染（支援自動佇列與載入重試）
+        typeset(detailCard);
 
         // 更新底部導航列狀態
         updateBottomBar(ch.slides.length);
@@ -938,7 +975,13 @@
       // 折疊卡展開切換
       window.toggleCollapse = function(id) {
         const el = document.getElementById(id);
-        if (el) el.classList.toggle('open');
+        if (el) {
+          el.classList.toggle('open');
+          if (el.classList.contains('open')) {
+            const content = el.querySelector('.collapse-content');
+            if (content) typeset(content);
+          }
+        }
       };
 
       // 監聽年份點擊
@@ -988,10 +1031,12 @@
         if (e.key === 'ArrowRight') nextBtn.click();
       });
 
-      // 初始化第一次渲染
-      window.addEventListener('DOMContentLoaded', () => {
+      // 初始化第一次渲染（確保已就緒時立即執行）
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderMatrix);
+      } else {
         renderMatrix();
-      });
+      }
     })();
   </script>
 </body>
