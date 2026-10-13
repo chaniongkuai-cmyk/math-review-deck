@@ -19,13 +19,22 @@
   <!-- 封面 -->
   <section id="cover" class="cover">
     <div class="cover-top-bar">
-      <a href="mobile.html" class="cover-teacher-btn" style="text-decoration:none; margin-right:8px; display:inline-flex; align-items:center; gap:4px;" title="切換至手機與平板題號速查版">📱 手機速查版</a>
-      <button class="cover-teacher-btn" id="coverTeacherBtn" title="教師專用：設定課堂開放進度">⚙️ 課堂進度控制</button>
+      <div class="cover-top-actions">
+        <button class="cover-teacher-btn" id="coverTeacherBtn" title="教師專用：設定課堂開放進度">⚙️ 課堂進度控制</button>
+        <a href="mobile.html" class="cover-teacher-btn cover-mobile-btn" id="coverMobileBtn" title="切換至手機與平板題號速查版">📱 手機速查版</a>
+      </div>
+      <!-- 手機速查版 QR 碼面板（置於手機速查版按鈕正下方） -->
+      <a href="mobile.html" class="cover-qr-card" id="coverMobileQrCard" title="手機掃碼直接進入速查版">
+        <div id="coverMobileQrCode" class="cover-qr-box"></div>
+        <div class="cover-qr-label">
+          <span>📱 掃碼進入手機版</span>
+        </div>
+      </a>
     </div>
     <div class="cover-inner">
       <p class="cover-eyebrow">澳門四校聯合入學考試 · 數學科高三總複習</p>
       <h1 class="cover-title">四校聯考 數學總複習</h1>
-      <p class="cover-sub">正卷（選擇題＋解答題） · 附加卷（微積分＋複數） · 一頁一題 · 左題右解 · 動態探究</p>
+      <p class="cover-sub"><span>正卷（選擇題＋解答題）</span> · <span>附加卷（微積分＋複數）</span> · <span>一頁一題</span> · <span>左題右解</span> · <span>動態探究</span></p>
       
 
 
@@ -42,7 +51,13 @@
       <button class="home-btn" id="homeBtn" title="回封面">✦ 複習範本</button>
       <div class="crumb" id="crumb"></div>
       <div class="top-actions">
-        <a href="mobile.html" class="ghost-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="切換至手機與平板題號速查版">📱 手機版</a>
+        <div class="top-mobile-wrapper">
+          <a href="mobile.html" class="ghost-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="切換至手機與平板題號速查版">📱 手機版</a>
+          <div class="top-qr-popover" id="topQrPopover">
+            <div id="topMobileQrCode" class="top-qr-svg"></div>
+            <div class="top-qr-tip">📱 掃碼進入手機版</div>
+          </div>
+        </div>
         <button class="ghost-btn teacher-ctrl-btn" id="topTeacherBtn" title="課堂開放進度控制">⚙️ 課堂進度控制</button>
         <button class="ghost-btn" id="tocToggle" title="目錄">☰ 目錄</button>
       </div>

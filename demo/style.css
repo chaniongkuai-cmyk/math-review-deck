@@ -50,7 +50,7 @@ button { font: inherit; cursor: pointer; }
   padding: 40px 24px;
 }
 .cover-inner {
-  max-width: 880px;
+  max-width: 960px;
   width: 100%;
   text-align: center;
   background: rgba(255, 255, 255, 0.72);
@@ -58,7 +58,7 @@ button { font: inherit; cursor: pointer; }
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
   box-shadow: var(--shadow);
-  padding: 54px 46px 46px;
+  padding: 48px 46px 42px;
 }
 .cover-eyebrow {
   margin: 0 0 10px;
@@ -69,10 +69,11 @@ button { font: inherit; cursor: pointer; }
 }
 .cover-title {
   margin: 0;
-  font-size: clamp(44px, 8vw, 84px);
+  font-size: clamp(28px, 5.2vw, 70px);
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.15;
   letter-spacing: 0.02em;
+  white-space: nowrap;
   background: linear-gradient(120deg, var(--blue), var(--violet) 45%, var(--teal));
   -webkit-background-clip: text;
   background-clip: text;
@@ -81,8 +82,14 @@ button { font: inherit; cursor: pointer; }
 .cover-sub {
   margin: 18px 0 30px;
   color: var(--muted);
-  font-size: clamp(15px, 2.2vw, 20px);
+  font-size: clamp(14px, 1.8vw, 18px);
   font-weight: 500;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+.cover-sub span {
+  display: inline-block;
+  white-space: nowrap;
 }
 .cover-chapters {
   display: grid;
@@ -1238,6 +1245,15 @@ svg .dim { fill: var(--muted); }
   top: 18px;
   right: 24px;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.cover-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .cover-teacher-btn {
   background: rgba(255, 255, 255, 0.95);
@@ -1254,6 +1270,7 @@ svg .dim { fill: var(--muted); }
   gap: 6px;
   transition: all 0.2s ease;
   backdrop-filter: blur(8px);
+  text-decoration: none;
 }
 .cover-teacher-btn:hover {
   background: #f8fafc;
@@ -1261,6 +1278,109 @@ svg .dim { fill: var(--muted); }
   color: #2563eb;
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+}
+
+/* 手機版速查二維碼卡片（置於手機速查版按鈕正下方） */
+.cover-qr-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 18px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.cover-qr-card:hover {
+  transform: translateY(-2px);
+  border-color: #3b82f6;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.2);
+}
+.cover-qr-box {
+  width: 108px;
+  height: 108px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.cover-qr-box svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.cover-qr-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cover-qr-card:hover .cover-qr-label {
+  color: #1d4ed8;
+}
+
+/* 舞台頂部列手機版懸浮二維碼 */
+.top-mobile-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.top-qr-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.top-mobile-wrapper:hover .top-qr-popover {
+  display: flex;
+}
+.top-qr-svg {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top-qr-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.top-qr-tip {
+  font-size: 11px;
+  font-weight: 800;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .cover-qr-card {
+    display: none;
+  }
 }
 
 /* 舞台頂部列教師按鈕 */

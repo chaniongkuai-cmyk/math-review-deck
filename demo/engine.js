@@ -387,6 +387,34 @@
         <div class="cc-list">${c.sections ? c.sections.join('　') : ''}</div>`;
       host.appendChild(card);
     });
+    renderMobileQrCodes();
+  }
+
+  // ---- 渲染手機速查版專屬 QR 碼 ----
+  function renderMobileQrCodes() {
+    const targetUrl = window.location.protocol.startsWith('http')
+      ? new URL('mobile.html', window.location.href).href
+      : 'https://chaniongkuai-cmyk.github.io/math-review-deck/demo/mobile.html';
+
+    const renderTo = (containerId, cellSize, margin) => {
+      const el = $(containerId);
+      if (!el) return;
+      if (typeof window.qrcode === 'function') {
+        try {
+          const qr = window.qrcode(0, 'M');
+          qr.addData(targetUrl);
+          qr.make();
+          el.innerHTML = qr.createSvgTag({ cellSize: cellSize || 3, margin: margin !== undefined ? margin : 2 });
+          return;
+        } catch (e) {
+          console.error('QR code generation error:', e);
+        }
+      }
+      el.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=' + encodeURIComponent(targetUrl) + '" alt="QR" width="108" height="108" />';
+    };
+
+    renderTo('coverMobileQrCode', 3, 2);
+    renderTo('topMobileQrCode', 3, 2);
   }
 
   // ---- 目錄 ----
