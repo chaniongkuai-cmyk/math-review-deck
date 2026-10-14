@@ -952,7 +952,16 @@
           // 保留 LaTeX
         }
 
-        const isMC = !!(s.options && s.options.length);
+        // 題目文本與選項處理（相容 2021 年將選項直接寫在題幹中的結構）
+        let qText = s.q || '';
+        let options = s.options ? [...s.options] : [];
+        if (!options.length && /<br\s*\/?>\s*[A-E]\./i.test(qText)) {
+          const parts = qText.split(/<br\s*\/?>\s*(?=[A-E]\.)/i);
+          qText = parts[0];
+          options = parts.slice(1).map(opt => opt.replace(/<br\s*\/?>/gi, '').trim());
+        }
+
+        const isMC = options.length > 0 || (s.score && s.score.includes('選擇題')) || (s.qNum && s.qNum.includes('選擇題')) || (rawAns && /^[A-E]$/i.test(rawAns.trim()));
 
         // 建立卡片 HTML
         let html = `
@@ -968,10 +977,10 @@
           <!-- 題幹區 -->
           <div class="question-box">
             <div class="section-title">📝 試題題幹與條件</div>
-            <div class="question-text">${s.q}</div>
-            ${isMC ? `
+            <div class="question-text">${qText}</div>
+            ${isMC && options.length ? `
               <div class="options-grid" id="optionsGrid">
-                ${s.options.map((opt, i) => {
+                ${options.map((opt, i) => {
                   const m = opt.match(/^([A-Ea-e])\./);
                   const letter = m ? m[1].toUpperCase() : String.fromCharCode(65 + i);
                   return `<button type="button" class="opt-card" data-letter="${letter}" onclick="checkOption('${letter}')">${opt}</button>`;
