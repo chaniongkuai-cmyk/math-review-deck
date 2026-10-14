@@ -394,13 +394,93 @@
     }
 
     .opt-card {
-      padding: 10px 14px;
+      padding: 11px 14px;
       background: #f8fafc;
-      border: 1px solid #e2e8f0;
+      border: 1.5px solid #e2e8f0;
       border-radius: 10px;
       font-size: 14px;
       color: #1e293b;
       line-height: 1.5;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      user-select: none;
+    }
+
+    .opt-card:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .opt-card:active {
+      transform: scale(0.99);
+    }
+
+    .opt-card.opt-correct {
+      background: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+      font-weight: 700;
+      box-shadow: 0 0 0 1.5px #10b981;
+    }
+
+    .opt-card.opt-wrong {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+      font-weight: 700;
+      box-shadow: 0 0 0 1.5px #ef4444;
+    }
+
+    /* 選擇題答案揭曉互動區 */
+    .answer-interactive-box {
+      margin: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-toggle-ans {
+      width: 100%;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
+    .btn-toggle-ans:active {
+      transform: scale(0.98);
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    }
+
+    .btn-toggle-ans.revealed {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: none;
+    }
+
+    .btn-ans-icon {
+      font-size: 16px;
     }
 
     /* 答案直覺提示橫幅 */
@@ -413,6 +493,20 @@
       display: flex;
       align-items: baseline;
       gap: 8px;
+      animation: fadeInAns 0.25s ease-out;
+    }
+
+    .answer-banner.hidden-ans {
+      display: none;
+    }
+
+    .answer-interactive-box .answer-banner {
+      margin: 0;
+    }
+
+    @keyframes fadeInAns {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .ans-tag {
@@ -858,6 +952,8 @@
           // 保留 LaTeX
         }
 
+        const isMC = !!(s.options && s.options.length);
+
         // 建立卡片 HTML
         let html = `
           <div class="card-topbar">
@@ -873,20 +969,35 @@
           <div class="question-box">
             <div class="section-title">📝 試題題幹與條件</div>
             <div class="question-text">${s.q}</div>
-            ${s.options && s.options.length ? `
-              <div class="options-grid">
-                ${s.options.map(opt => `<div class="opt-card">${opt}</div>`).join('')}
+            ${isMC ? `
+              <div class="options-grid" id="optionsGrid">
+                ${s.options.map((opt, i) => {
+                  const m = opt.match(/^([A-Ea-e])\./);
+                  const letter = m ? m[1].toUpperCase() : String.fromCharCode(65 + i);
+                  return `<button type="button" class="opt-card" data-letter="${letter}" onclick="checkOption('${letter}')">${opt}</button>`;
+                }).join('')}
               </div>
             ` : ''}
           </div>
 
-          <!-- 正確答案橫幅 -->
-          ${rawAns ? `
+          <!-- 正確答案（選擇題改為按鍵顯示，非選擇題直接顯示） -->
+          ${rawAns ? (isMC ? `
+            <div class="answer-interactive-box" id="ansInteractiveBox">
+              <button type="button" class="btn-toggle-ans" id="btnToggleAns" onclick="toggleAnswerReveal()">
+                <span class="btn-ans-icon">🎯</span>
+                <span class="btn-ans-text">點擊查看正確答案</span>
+              </button>
+              <div class="answer-banner hidden-ans" id="answerBanner">
+                <span class="ans-tag">🎯 正確答案：</span>
+                <span class="ans-val">${ansDisplay}</span>
+              </div>
+            </div>
+          ` : `
             <div class="answer-banner">
               <span class="ans-tag">🎯 正確答案：</span>
               <span class="ans-val">${ansDisplay}</span>
             </div>
-          ` : ''}
+          `) : ''}
 
           <!-- 折疊卡 1：核心考點與必背公式 (預設展開) -->
           ${s.knowledge ? `
@@ -981,6 +1092,82 @@
             const content = el.querySelector('.collapse-content');
             if (content) typeset(content);
           }
+        }
+      };
+
+      // 選擇題答案揭曉切換
+      window.toggleAnswerReveal = function() {
+        const banner = document.getElementById('answerBanner');
+        const btn = document.getElementById('btnToggleAns');
+        const grid = document.getElementById('optionsGrid');
+        if (!banner || !btn) return;
+
+        const isHidden = banner.classList.contains('hidden-ans');
+        if (isHidden) {
+          banner.classList.remove('hidden-ans');
+          btn.classList.add('revealed');
+          btn.innerHTML = `<span class="btn-ans-icon">🙈</span><span class="btn-ans-text">收起正確答案</span>`;
+          // 高亮正確選項
+          const ch = getCurrentChapter();
+          if (ch) {
+            const s = ch.slides[state.selectedSlideIdx];
+            const correctAns = ((s.solution && s.solution.ans) || s.ans || '').trim().toUpperCase();
+            if (grid && correctAns) {
+              const correctBtn = grid.querySelector(`[data-letter="${correctAns}"]`);
+              if (correctBtn) correctBtn.classList.add('opt-correct');
+            }
+          }
+          typeset(banner);
+        } else {
+          banner.classList.add('hidden-ans');
+          btn.classList.remove('revealed');
+          btn.innerHTML = `<span class="btn-ans-icon">🎯</span><span class="btn-ans-text">點擊查看正確答案</span>`;
+          if (grid) {
+            grid.querySelectorAll('.opt-card').forEach(c => {
+              c.classList.remove('opt-correct', 'opt-wrong');
+            });
+          }
+        }
+      };
+
+      // 點選選項互動測驗
+      window.checkOption = function(selectedLetter) {
+        const banner = document.getElementById('answerBanner');
+        const btn = document.getElementById('btnToggleAns');
+        const grid = document.getElementById('optionsGrid');
+        const ch = getCurrentChapter();
+        if (!ch) return;
+        const s = ch.slides[state.selectedSlideIdx];
+        if (!s) return;
+        const correctAns = ((s.solution && s.solution.ans) || s.ans || '').trim().toUpperCase();
+
+        if (grid) {
+          grid.querySelectorAll('.opt-card').forEach(c => {
+            c.classList.remove('opt-correct', 'opt-wrong');
+          });
+
+          const selectedBtn = grid.querySelector(`[data-letter="${selectedLetter}"]`);
+          const correctBtn = grid.querySelector(`[data-letter="${correctAns}"]`);
+
+          if (selectedLetter === correctAns) {
+            if (selectedBtn) selectedBtn.classList.add('opt-correct');
+            if (btn) {
+              btn.classList.add('revealed');
+              btn.innerHTML = `<span class="btn-ans-icon">🎉</span><span class="btn-ans-text">回答正確！正確答案是 ${correctAns}（點擊收起）</span>`;
+            }
+          } else {
+            if (selectedBtn) selectedBtn.classList.add('opt-wrong');
+            if (correctBtn) correctBtn.classList.add('opt-correct');
+            if (btn) {
+              btn.classList.add('revealed');
+              btn.innerHTML = `<span class="btn-ans-icon">💡</span><span class="btn-ans-text">正確答案是 ${correctAns}（點擊收起）</span>`;
+            }
+          }
+        }
+
+        if (banner) {
+          banner.classList.remove('hidden-ans');
+          typeset(banner);
         }
       };
 
